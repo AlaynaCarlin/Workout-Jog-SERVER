@@ -1,3 +1,4 @@
+require("dotenv").config();
 const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
@@ -7,8 +8,9 @@ app.use('/test', (req, res) => {
     res.send('This is a message from the test endpoint on the server!')
 });
 
-app.use("/log", controllers.logController);
+app.use(Express.json());//allows the server to be able to process requests that come in
 
+app.use("/log", controllers.logController);
 app.use("/user", controllers.userController);
 
 dbConnection.authenticate()
