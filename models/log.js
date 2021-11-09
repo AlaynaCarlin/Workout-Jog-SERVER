@@ -16,6 +16,7 @@ const Log = db.define("log", {
     },
     owner_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
     }
 });
+
+module.exports = Log;

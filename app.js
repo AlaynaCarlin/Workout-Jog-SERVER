@@ -10,8 +10,10 @@ app.use('/test', (req, res) => {
 
 app.use(Express.json());//allows the server to be able to process requests that come in
 
-app.use("/log", controllers.logController);
 app.use("/user", controllers.userController);
+
+app.use(require("./middleware/validate-jwt"));
+app.use("/log", controllers.logController);
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
